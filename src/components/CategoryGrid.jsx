@@ -1,0 +1,69 @@
+import React from 'react';
+import { ArrowRight } from "lucide-react";
+
+const categories = [
+  { id: 1, name: "Bags", count: 6, image: "https://knotsnco.in/cdn/shop/files/Bags_category.png" },
+  { id: 2, name: "Plushies", count: 10, image: "https://knotsnco.in/cdn/shop/files/Plushies_category.png" },
+  { id: 3, name: "Keychain", count: 16, image: "https://knotsnco.in/cdn/shop/files/Keychain_category.png" },
+  { id: 4, name: "Bouquets", count: 42, image: "https://knotsnco.in/cdn/shop/files/Bouquets_category.png" },
+];
+
+export default function CategoryGrid() {
+  return (
+    // Background sirf plain light gray rakha hai
+    <section className="bg-gray-50 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          {/* Main Large Card - Mobile par sabse upar */}
+          <div className="md:col-span-7 bg-white rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between border border-gray-100 hover:shadow-xl transition-all duration-500 group">
+            <div className="order-2 md:order-1 text-center md:text-left mt-6 md:mt-0">
+              <span className="inline-block px-4 py-1.5 bg-gray-50 text-[#FFB1B1] text-[10px] font-black uppercase tracking-widest rounded-full mb-4">
+                {categories[0].count} Products
+              </span>
+              <h2 className="text-4xl md:text-6xl font-black text-[#4A3434] uppercase tracking-tighter mb-6">
+                {categories[0].name}
+              </h2>
+              <button className="flex items-center gap-2 text-[#4A3434] font-bold text-xs uppercase tracking-[0.2em] group-hover:text-[#FFB1B1] transition-all">
+                View All <ArrowRight size={18} />
+              </button>
+            </div>
+            
+            <div className="order-1 md:order-2 transform transition-transform duration-700 group-hover:scale-105">
+              <img 
+                src={categories[0].image} 
+                alt="Bags" 
+                className="w-56 md:w-80 h-auto drop-shadow-xl" 
+              />
+            </div>
+          </div>
+
+          {/* Side Cards - Mobile par ek ke niche ek line se */}
+          <div className="md:col-span-5 flex flex-col gap-6">
+            {categories.slice(1).map((cat) => (
+              <div key={cat.id} className="bg-white rounded-[1.5rem] p-6 flex items-center justify-between border border-gray-100 hover:shadow-lg transition-all group overflow-hidden">
+                <div>
+                  <span className="text-[9px] font-bold text-[#FFB1B1] uppercase tracking-widest bg-gray-50 px-2 py-1 rounded">
+                    {cat.count} Products
+                  </span>
+                  <h3 className="text-xl md:text-2xl font-black text-[#4A3434] uppercase tracking-tighter mt-2 group-hover:text-[#FFB1B1] transition-colors">
+                    {cat.name}
+                  </h3>
+                </div>
+                <div className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110">
+                  <img 
+                    src={cat.image} 
+                    alt={cat.name} 
+                    className="max-h-full w-auto drop-shadow-md" 
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
