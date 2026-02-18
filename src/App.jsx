@@ -4,7 +4,7 @@ import FeaturesStrip from "./components/FeaturesStrip";
 import BottomNav from "./components/BottomNav";
 import ProductSlider from "./components/ProductSlider";
 import PromoBanner from "./components/PromoBanner";
-import CategoryGrid from "./components/CategoryGrid";
+import CategoryGrid from "./components/categoryGrid";
 
 
 function App() {
